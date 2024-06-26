@@ -102,9 +102,9 @@ namespace QueryCSV
                         csv.ReadHeader();
                         fieldCount = csv.HeaderRecord.Length;
 
-                        string createTableQuery = "CREATE TABLE IF NOT EXISTS CsvData (" +
+                        string createTableQuery = "DROP TABLE IF EXISTS CsvData; CREATE TABLE IF NOT EXISTS CsvData (" +
                                                   string.Join(",", csv.HeaderRecord.Select(h => $"[{h}] TEXT")) + ")";
-                        MessageBox.Show(createTableQuery);
+                        //MessageBox.Show(createTableQuery);
                         using (var cmd = new SQLiteCommand(createTableQuery, connection))
                         {
                             cmd.ExecuteNonQuery();
@@ -115,9 +115,9 @@ namespace QueryCSV
                         csv.Read();
                         fieldCount = csv.Context.Parser.Record.Length;
 
-                        string createTableQuery = "CREATE TABLE IF NOT EXISTS CsvData (" +
+                        string createTableQuery = "DROP TABLE IF EXISTS CsvData; CREATE TABLE IF NOT EXISTS CsvData (" +
                                                   string.Join(",", Enumerable.Range(0, fieldCount).Select(i => $"Column{i + 1} TEXT")) + ")";
-                        MessageBox.Show(createTableQuery);
+                        //MessageBox.Show(createTableQuery);
                         using (var cmd = new SQLiteCommand(createTableQuery, connection))
                         {
                             cmd.ExecuteNonQuery();
