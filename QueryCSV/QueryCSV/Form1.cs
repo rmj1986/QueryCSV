@@ -206,7 +206,7 @@ namespace QueryCSV
                 var tableExists = cmd.ExecuteScalar();
                 if (tableExists == null)
                 {
-                    MessageBox.Show("Table 'CsvData' does not exist.");
+                   // MessageBox.Show("Table 'CsvData' does not exist.");
                     return;
                 }
             }
